@@ -110,6 +110,8 @@ curl -L https://github.com/kotbezvina-a11y/WebRecon/archive/refs/heads/main.zip 
 tar -xf main.zip
 ```
 
+___
+
 **RU:**
 
 # WebRecon Project
@@ -207,3 +209,5 @@ curl -L https://github.com/kotbezvina-a11y/WebRecon/archive/refs/heads/main.zip 
 
 tar -xf main.zip
 ```
+
+____
