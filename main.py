@@ -313,7 +313,7 @@ actions = {
 
 while True:
     try:
-        cmd = int(input('\nSelect an option: '))
+        cmd = int(input('\nSelect an option(1-10): '))
 
         if cmd in actions:
             actions[cmd]()
