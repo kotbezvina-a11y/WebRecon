@@ -1,66 +1,29 @@
-*## Features*
-
-*- URL target configuration*
-
-*- Directory scanning*
-
-*- HTTP status handling*
-
-*- HTTPError / URLError handling*
-
-*- Wordlist management*
-
-*- Result analysis*
-
-*- Report generation*
-
-
-
-*## Requirements*
-
-*- Python 3.14*
-
-*- Internet connection*
-
-
-
-*## Usage*
-
-*python main.py*
-
-
+![Static Badge](https://img.shields.io/badge/version-1.0.1-green?style=flat) ![Static Badge](https://img.shields.io/badge/license-No%20license-darkred?style=flat)
 
 
 
 **EN:**
 
-###### ========== WebRecon Project ==========
+# WebRecon Project
 
 
+____
 
-!!!WARNING!!!
-
+> [!WARNING]
 This is an educational project designed to test personal abilities,
-
 and to be stored as a "portfolio" reflecting the progression of Python development skills.
-
 The project is fully functional and can be used as a complete tool,
-
 however, you should keep in mind that the project may not be perfect,
-
 and errors may be present, particularly architectural ones.
 
-
-
-###### ======================================
-
+____
 
 
 ###### \---
 
 
 
-###### ========== WebRecon Functionality ==========
+## WebRecon Functionality 
 
 
 
@@ -77,9 +40,7 @@ Displays the main menu.
 **2. Set target:** 
 
 This option sets a permanent URL that will be used in all subsequent processes. The URL format must comply with the following examples:  
-
 https://google.com or http://google.com
-
 Using any other protocols will result in an error.
 
 
@@ -87,7 +48,6 @@ Using any other protocols will result in an error.
 **3. Scan website:**
 
 Scans all directories of the website listed in the `wordlist.txt` file.
-
 
 
 **4. Show wordlist:** 
@@ -130,39 +90,40 @@ Analyzes the data obtained during the scan and generates a statistical report.
 
 Exits the program.
 
+____
 
+## WebRecon Installation
 
-###### ============================================
+**Linux**
 
+```
+wget https://github.com/kotbezvina-a11y/WebRecon/archive/refs/heads/main.zip
 
+unzip main.zip
+```
 
+**Windows**
 
+```
+curl -L https://github.com/kotbezvina-a11y/WebRecon/archive/refs/heads/main.zip -o main.zip
 
-
-
-
-
-
+tar -xf main.zip
+```
 
 **RU:**
 
-###### ========== WebRecon Project ==========
+# WebRecon Project
 
+____
 
-
-!!!ВНИМАНИЕ!!!
-
+> [!WARNING]
 Это учебный проект, предназначенный для проверки собственных возможностей,
 и хранения в виде "портфолио" отображающего прогрессию навыков разработки на языке Python.
 Проект является полностью рабочим и его можно использовать как **полноценный инструмент**,
-
 при этом, вы должны держать в голове факт того, что проект может быть не идеальным,
-
 и могу присутствовать ошибки, в особенность архитектурные.
 
-
-
-###### ======================================
+____
 
 
 
@@ -170,7 +131,7 @@ Exits the program.
 
 
 
-###### ========== WebRecon Functionality ==========
+## WebRecon Functionality 
 
 
 
@@ -227,7 +188,22 @@ https://google.com или http://google.com
 
 Выход.
 
+____
 
-============================================
----
+## WebRecon Installation
 
+**Linux**
+
+```
+wget https://github.com/kotbezvina-a11y/WebRecon/archive/refs/heads/main.zip
+
+unzip main.zip
+```
+
+**Windows**
+
+```
+curl -L https://github.com/kotbezvina-a11y/WebRecon/archive/refs/heads/main.zip -o main.zip
+
+tar -xf main.zip
+```
