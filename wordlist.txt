@@ -1,0 +1,10 @@
+/
+/admin
+/login
+/robots.txt
+/images
+/uploads
+/backup.zip
+/.git
+/.env
+/server-status

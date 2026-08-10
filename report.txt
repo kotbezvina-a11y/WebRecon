@@ -1,0 +1,38 @@
+========== WebRecon Report ==========
+Target-URL: https://www.google.com
+Wordlist entries: 10
+========== ANALYSIS ==========
+
+Total paths: 10
+
+Scan result:
+
+Status-code detected:
+200 OK: 3
+301 Redirect: 0
+403 Forbidden: 0
+404 Not Found: 7
+
+Interesting paths:
+/robots.txt: 200
+
+Largest response:
+/: 84321
+
+==============================
+========== RESULTS ==========
+
+[1] /                    | 200 | 84321 bytes
+[2] /admin               | 404 | 1566 bytes
+[3] /login               | 404 | 1566 bytes
+[4] /robots.txt          | 200 | 6624 bytes
+[5] /images              | 200 | 82660 bytes
+[6] /uploads             | 404 | 1568 bytes
+[7] /backup.zip          | 404 | 1571 bytes
+[8] /.git                | 404 | 1565 bytes
+[9] /.env                | 404 | 1565 bytes
+[10] /server-status       | 404 | 1574 bytes
+
+=============================
+
+=========== END REPORT ===========
