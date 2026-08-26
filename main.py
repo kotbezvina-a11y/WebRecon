@@ -95,11 +95,11 @@ def scan_website():
                     scan_result[url_key]['Size'] = int(raw_size) if raw_size is not None else 0
 
                     if not scan_result[url_key]['Size']:
-                        scan_result[url_key]['Size'] = 0
+                        scan_result[url_key]['Size'] = 'Unknown'
 
                 except urllib.error.URLError as e:
                     scan_result[url_key]['Status'] = 'URL-Error'
-                    scan_result[url_key]['Size'] = 0
+                    scan_result[url_key]['Size'] = 'Unknown'
 
                     if not url_error:
                         print(
@@ -297,7 +297,7 @@ def analyze_result():
         for key, value in scan_result.items():
             size = value.get('Size')
 
-            if size:
+            if size and not size == 'Unknown':
                 if size > max_size:
                     key_size = key
                     max_size = size
