@@ -58,28 +58,48 @@ def set_target():
 
 def scan_website():
     url_error = False
+    REQUEST_TIMEOUT = 5
 
     if target_url:
         with open('wordlist.txt', 'r') as f:
             scan_result.clear()
             for line in f:
-                scan_result[line.rstrip('\n')] = {}
-                scan_result[line.rstrip('\n')]['Status'] = 'Waiting'
-                scan_result[line.rstrip('\n')]['Size'] = None
+                line = line.rstrip('\n')
+                if not line.startswith('/'):
+                    line = '/' + line
+                if line.endswith('/') and len(line) > 1:
+                    line = line.rstrip('/')
+                scan_result[line] = {}
+                scan_result[line]['Status'] = 'Waiting'
+                scan_result[line]['Size'] = None
 
             for url_key in scan_result.keys():
+                request = urllib.request.Request(
+                    target_url + url_key,
+                    method="HEAD"
+                )
+
                 try:
-                    with urllib.request.urlopen(target_url + url_key) as response:
+                    with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
                         scan_result[url_key]['Status'] = response.status
-                        scan_result[url_key]['Size'] = len(response.read())
+                        raw_size = response.headers.get('Content-Length')
+
+                        if raw_size and raw_size.strip().isdigit():
+                            scan_result[url_key]['Size'] = int(raw_size)
+                        else:
+                            scan_result[url_key]['Size'] = 0
 
                 except urllib.error.HTTPError as e:
-                    scan_result[url_key]['Status'] = e.status
-                    scan_result[url_key]['Size'] = len(e.read())
+                    scan_result[url_key]['Status'] = e.code
+                    raw_size = e.headers.get('Content-Length')
+                    scan_result[url_key]['Size'] = int(raw_size) if raw_size is not None else 0
+
+                    if not scan_result[url_key]['Size']:
+                        scan_result[url_key]['Size'] = 0
 
                 except urllib.error.URLError as e:
-                    for key in scan_result.keys():
-                        scan_result[key]['Status'] = 'URL-Error'
+                    scan_result[url_key]['Status'] = 'URL-Error'
+                    scan_result[url_key]['Size'] = 0
 
                     if not url_error:
                         print(
@@ -144,7 +164,7 @@ def remove_path():
         lines = f.readlines()
 
     for index, path in enumerate(lines, start=1):
-        print(f'[{index}] {path.rstrip('\n')}')
+        print(f"[{index}] {path.rstrip('\n')}")
 
     try:
         remove_path_cmd = int(input('\nEnter the number of the item to delete: ')) - 1
@@ -214,7 +234,7 @@ def view_result():
             status = value.get('Status')
             size = value.get('Size')
             raw_data.append(
-                f'[{index:<0}] {key:<20} | {status} | {size} bytes'
+                f'[{index}] {key:<20} | {status} | {size} bytes'
             )
         raw_data.append('\n=============================')
 
@@ -313,7 +333,7 @@ actions = {
 
 while True:
     try:
-        cmd = int(input('\nSelect an option(1-10): '))
+        cmd = int(input('\nSelect an option: '))
 
         if cmd in actions:
             actions[cmd]()
